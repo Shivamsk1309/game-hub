@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
+import getOptimisedImageUrl from "../services/image-url";
 
 interface Props {
   game: Game;
@@ -20,10 +21,14 @@ interface Props {
 const GameCards = ({ game }: Props) => {
   return (
     <Card overflow="hidden" borderRadius={20}>
-      <Image objectFit="cover" height={80} src={game.background_image}></Image>
+      <Image
+        objectFit="cover"
+        height={80}
+        src={getOptimisedImageUrl(game.background_image)}
+      ></Image>
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
-        <HStack justifyContent={"space-between" }>
+        <HStack justifyContent={"space-between"}>
           <PlatformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
           ></PlatformIconList>
