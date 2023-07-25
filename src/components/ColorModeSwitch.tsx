@@ -1,6 +1,5 @@
 import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
-import { color } from "framer-motion";
-import React from "react";
+
 
 const ColorModeSwitch = () => {
   const { colorMode, toggleColorMode } = useColorMode();
