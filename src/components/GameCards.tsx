@@ -20,6 +20,8 @@ interface Props {
 
 const GameCards = ({ game }: Props) => {
   return (
+
+    
     <Card overflow="hidden" borderRadius={20}>
       <Image
         objectFit="cover"
