@@ -1,24 +1,29 @@
 import {
-  Box,
+  Button,
   HStack,
   Image,
+  Link,
   List,
   ListItem,
   Spinner,
-  Text,
-  VStack,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 
 import getOptimisedImageUrl from "../services/image-url";
 
-const GenreList = () => {
-  const { data, isLoading } = useGenres();
+interface Props {
+  onSelectGenre: (genre: Genre) => void;
+}
 
-  if (isLoading) return <Spinner/>;
+const GenreList = ({ onSelectGenre }: Props) => {
+  const { data, isLoading, error } = useGenres();
+
+  if (error) return null;
+
+  if (isLoading) return <Spinner />;
   return (
     <>
-      <List paddingY="20px">
+      <List paddingY="20px" overflow="hidden">
         {data.map((genres) => (
           <ListItem key={genres.id} paddingY="5px">
             <HStack>
@@ -29,7 +34,16 @@ const GenreList = () => {
                 overflow="hidden"
                 src={getOptimisedImageUrl(genres.image_background)}
               />
-              <Text fontSize="lg">{genres.name}</Text>
+              <Button
+                onClick={() => onSelectGenre(genres)}
+                fontSize="md"
+                variant="link"
+                overflow="hidden"
+              >
+                {genres.name === "Massively Multiplayer"
+                  ? "Multiplayer"
+                  : genres.name}
+              </Button>
             </HStack>
           </ListItem>
         ))}
