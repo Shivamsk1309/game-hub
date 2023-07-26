@@ -3,7 +3,6 @@ import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 
-
 function App() {
   return (
     <Grid
@@ -11,17 +10,21 @@ function App() {
         base: `"nav" "main"`,
         lg: `"nav nav " "aside main"`,
       }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
     >
-      <GridItem area="nav" >
-        <NavBar ></NavBar>
+      <GridItem area="nav">
+        <NavBar />
       </GridItem>
       <Show above="lg">
-        <GridItem area="aside" >
-          <GenreList ></GenreList>
+        <GridItem area="aside" paddingX="8px">
+          <GenreList />
         </GridItem>
       </Show>
-      <GridItem area="main" >
-        <GameGrid></GameGrid>
+      <GridItem area="main">
+        <GameGrid />
       </GridItem>
     </Grid>
   );
