@@ -45,18 +45,21 @@ function App() {
       <GridItem area="main">
         <Box ml={5}>
           <GameHeading gameQuery={gameQuery}></GameHeading>
+          <HStack>
+
           <PlatformSelector
             selectedPlatform={gameQuery.platform}
             onSelectPlatform={(platform) =>
               setGameQuery({ ...gameQuery, platform })
             }
-          ></PlatformSelector>
+            ></PlatformSelector>
           <SortSelector
             selectedOrder={gameQuery.sortOrder}
             onSelectSortOrder={(sortOrder) =>
               setGameQuery({ ...gameQuery, sortOrder })
             }
-          ></SortSelector>
+            ></SortSelector>
+            </HStack>
         </Box>
 
         <GameGrid gameQuery={gameQuery} />
